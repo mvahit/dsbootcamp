@@ -1,13 +1,12 @@
 import setuptools
 
 setuptools.setup(name="dsbootcamp",
-                 version="0.0.4",
+                 version="0.0.10",
                  license="MIT",
                  author="Vahit Keskin",
                  author_mail="m.vahitkeskin@gmail.com",
                  description="Data Science Tools Package",
                  url="https://github.com/mvahit/dsbootcamp",
-                 package=setuptools.find_packages(),
                  keywords=["data science", "machine learning", "bootcamp"],
                  classifiers=[
                      "Development Status :: 4 - Beta",
@@ -18,7 +17,7 @@ setuptools.setup(name="dsbootcamp",
                      "Topic :: Scientific/Engineering",
                  ],
 
-                 py_modules=['dsbootcamp']
+                 packages=setuptools.find_packages()
 
                  )
 

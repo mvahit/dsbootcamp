@@ -1,5 +1,6 @@
+################################
 # GITHUB
-
+################################
 
 commit:
 	git commit -am "commit from make file"
@@ -17,7 +18,17 @@ reset:
 	rm -f .git/index
 	git reset
 
-req:
-	pip freeze > requirements.txt
-
 compush: commit push
+
+
+################################
+# PYPI
+################################
+versionup:
+
+
+sdist:
+	python setup.py sdist
+
+upload:
+	twine upload dist/*

@@ -1,7 +1,9 @@
+import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
+
+
 def cat_summary(data):
-    import pandas as pd
-    import seaborn as sns
-    from matplotlib import pyplot as plt
     cats_names = [col for col in data.columns if len(data[col].unique()) < 10 and data[col].dtypes == 'O']
     for var in cats_names:
         print(pd.DataFrame({var: data[var].value_counts(),

@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(name="dsbootcamp",
-                 version="0.0.13",
+                 version="0.0.21",
                  license="MIT",
                  author="Vahit Keskin",
                  author_mail="m.vahitkeskin@gmail.com",
@@ -17,7 +17,8 @@ setuptools.setup(name="dsbootcamp",
                      "Topic :: Scientific/Engineering",
                  ],
 
-                 packages=setuptools.find_packages()
+                 packages=setuptools.find_packages(),
+                 install_requires=["numpy", "scipy", "pandas"]
 
                  )
 

@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(name="dsbootcamp",
-                 version="0.0.2",
+                 version="0.0.3",
                  license="MIT",
                  author="Vahit Keskin",
                  author_mail="m.vahitkeskin@gmail.com",
@@ -15,8 +15,7 @@ setuptools.setup(name="dsbootcamp",
                      "Programming Language :: Python",
                      "Programming Language :: Python :: 2.7",
                      "Programming Language :: Python :: 3.5",
-                     "Topic :: Scientific/Engineering"],
-                 python_requires=">= 3.6"
+                     "Topic :: Scientific/Engineering"]
                  )
 
 

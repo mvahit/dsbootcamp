@@ -10,3 +10,8 @@ Helper tools for data science tasks
 - iş görebilecek, işe yarar fonksiyonlar toplanacak.
 - fonksiyonlar iyileştirilecek
 - fonksiyonların test fonksiyonları yazılacak.
+
+
+# TODO
+
+- Kütüphane oluşturma basamakları bir md ile yazılacak.

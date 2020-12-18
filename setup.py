@@ -17,8 +17,8 @@ setuptools.setup(name="dsbootcamp",
                      "Topic :: Scientific/Engineering",
                  ],
 
-                 packages=setuptools.find_packages(),
-                 install_requires=["numpy", "scipy", "pandas"]
+                 packages=setuptools.find_packages()
+                 # install_requires=["numpy", "scipy", "pandas"]
 
                  )
 

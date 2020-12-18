@@ -24,8 +24,6 @@ compush: commit push
 ################################
 # PYPI
 ################################
-versionup:
-
 
 sdist:
 	python setup.py sdist

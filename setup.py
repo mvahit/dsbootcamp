@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(name="dsbootcamp",
-                 version="0.0.21",
+                 version="0.0.22",
                  license="MIT",
                  author="Vahit Keskin",
                  author_mail="m.vahitkeskin@gmail.com",

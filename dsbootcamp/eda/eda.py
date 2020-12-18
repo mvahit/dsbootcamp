@@ -22,3 +22,13 @@ def hist_for_nums(data, numeric_cols):
         plt.show()
         col_counter += 1
     print(col_counter, "variables have been plotted")
+
+
+
+def target_summary_with_cat(data, target):
+    col_names = [col for col in data.columns 
+                 if len(data[col].unique()) < 10 
+                 and col not in target]
+    
+    for var in col_names:
+        print(pd.DataFrame({"TARGET_MEAN": data.groupby(var)[target].mean()}), end="\n\n\n")

@@ -2,6 +2,7 @@ import inspect
 import os
 import types
 
+
 def get_all_functions(modul_path):
     """
     get_all_functions("/Users/mvahit/anaconda3/envs/dsbootcamp/lib/python3.8/tkinter")

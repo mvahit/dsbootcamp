@@ -3,18 +3,17 @@ import seaborn as sns
 from matplotlib import pyplot as plt
 
 
-def cat_summary(data):
-    cats_names = [col for col in data.columns if len(data[col].unique()) < 10 and data[col].dtypes == 'O']
-    for var in cats_names:
-        print(pd.DataFrame({var: data[var].value_counts(),
-                            "Ratio": 100 * data[var].value_counts() / len(data)}), end="\n\n\n")
-        sns.countplot(x=var, data=data)
-        plt.show()
+def cat_summary(data, col_name):
+    print(pd.DataFrame({col_name: data[col_name].value_counts(),
+                        "Ratio": 100 * data[col_name].value_counts() / len(data)}), end="\n\n\n")
+    sns.countplot(x=col_name, data=data)
+    plt.show()
 
 
 def cat_summary_adv(data, number_of_classes=10):
     """
         This function gives the summary of categorical variables for the given pandas dataframe
+
         Parameters
         ----------
         data: pandas dataframe 

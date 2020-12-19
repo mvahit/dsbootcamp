@@ -40,14 +40,17 @@ help(dsbootcamp.eda.eda)
 
 from dsbootcamp.eda.eda import cat_summary
 
-cat_summary(df)
+cat_summary(df, cat_cols)
 
 import dsbootcamp.prep.outlier
 dir(dsbootcamp.prep.outlier)
 
 
 
+import seaborn as sns
+import pandas as pd
+from dsbootcamp.eda.eda import cat_summary
 
-
-
-
+df = pd.read_csv("/Users/mvahit/Documents/GitHub/dsbootcamp/dsbootcamp/datasets/titanic.csv")
+cat_cols = [col for col in df.columns if df[col].dtypes == 'O']
+cat_summary_adv(df, cat_cols)

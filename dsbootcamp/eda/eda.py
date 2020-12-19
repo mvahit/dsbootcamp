@@ -3,54 +3,80 @@ import seaborn as sns
 from matplotlib import pyplot as plt
 
 
-def cat_summary(data, col_name):
-    print(pd.DataFrame({col_name: data[col_name].value_counts(),
-                        "Ratio": 100 * data[col_name].value_counts() / len(data)}), end="\n\n\n")
-    sns.countplot(x=col_name, data=data)
+def cat_summary(dataframe, col_name):
+    """
+            Summarise categorical col in dataframe
+
+            Parameters
+            ----------
+            dataframe: pandas dataframe
+                Dataframe that comprises categorical variables to be analysed
+            col_name: string
+                Name of categorical col
+
+
+            Examples
+            ----------
+            # for one variable
+            import seaborn as sns
+            from dsmlbc.eda.eda import cat_summary
+            df = sns.load_dataset("titanic")
+            cat_summary(df, "age")
+
+            # for all categorical variable
+            cat_cols = [col for col in df.columns if df[col].dtypes == 'O']
+            for col in cat_cols:
+                cat_summary(df, col)
+
+
+        """
+
+    print(pd.DataFrame({col_name: dataframe[col_name].value_counts(),
+                        "Ratio": 100 * dataframe[col_name].value_counts() / len(dataframe)}), end="\n\n\n")
+    sns.countplot(x=col_name, data=dataframe)
     plt.show()
 
 
 def cat_summary_adv(dataframe, categorical_cols, number_of_classes=10):
     """
-        This function gives the summary of categorical variables for the given pandas dataframe
+        Summarise categorical cols in dataframe
 
         Parameters
         ----------
         dataframe: pandas dataframe
             Dataframe that comprises categorical variables to be analysed
+
         categorical_cols: list
             List of categorical cols
-        number_of_classes: float
+
+        number_of_classes: int
             Default argument is given as 10 as generally categorical variables have fewer than 10 classes.
             Also categorical variables that have more than 10 classes will not be summarized and they will
             be printed.
 
         Examples
         ----------
-        cat_summary_adv(df, categorical_cols)
+        import seaborn as sns
+        from dsmlbc.eda.eda import cat_summary_adv
+        df = sns.load_dataset("titanic")
+        cat_cols = [col for col in df.columns if df[col].dtypes == 'O']
+        cat_summary_adv(df, cat_cols)
 
-        or
-
-        cat_summary_adv(df, 15)
     """
-
-
     col_count = 0
     cols_more_classes = []
-    
     for col in categorical_cols:
         if dataframe[col].nunique() <= number_of_classes:  # select according to its number of classes
             print(pd.DataFrame({col: dataframe[col].value_counts(),
-                                "Ratio (%)": round(100 * dataframe[col].value_counts()/ len(dataframe), 2)}),
+                                "Ratio (%)": round(100 * dataframe[col].value_counts() / len(dataframe), 2)}),
                   end="\n\n\n")
             col_count += 1
         else:
             cols_more_classes.append(dataframe[col].name)
 
-    print(f"{col_count} categorical variables have been described.\n\n")
+    print(f"{col_count} categorical variables have been described.\n")
     if len(cols_more_classes) > 0:
-        print(f"There are {len(cols_more_classes)} variables which have more than {number_of_classes} classes.\n\n")
-        print(f"Variable names that have more than {number_of_classes} classes.\n\n")
+        print(f"There are {len(cols_more_classes)} variables which have more than {number_of_classes} classes:")
         print(cols_more_classes)
 
 

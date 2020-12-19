@@ -10,14 +10,16 @@ def cat_summary(data, col_name):
     plt.show()
 
 
-def cat_summary_adv(data, number_of_classes=10):
+def cat_summary_adv(dataframe, categorical_cols, number_of_classes=10):
     """
         This function gives the summary of categorical variables for the given pandas dataframe
 
         Parameters
         ----------
-        data: pandas dataframe 
+        dataframe: pandas dataframe
             Dataframe that comprises categorical variables to be analysed
+        categorical_cols: list
+            List of categorical cols
         number_of_classes: float
             Default argument is given as 10 as generally categorical variables have fewer than 10 classes.
             Also categorical variables that have more than 10 classes will not be summarized and they will
@@ -25,29 +27,31 @@ def cat_summary_adv(data, number_of_classes=10):
 
         Examples
         ----------
-        cat_summary_adv(df)
+        cat_summary_adv(df, categorical_cols)
 
         or
 
         cat_summary_adv(df, 15)
     """
-    import pandas as pd
-    categorical_cols = [col for col in data.columns if data[col].dtypes == 'O']
-    var_count = 0  # Number of cat. variables will be printed.
-    vars_more_classes = []  # Number of cat. variables that have more than given argument number_of_classes will be returned.
+
+
+    col_count = 0
+    cols_more_classes = []
     
-    for var in categorical_cols:
-        if data[var].nunique() <= number_of_classes:  # select according to its number of classes
-            print(pd.DataFrame({var: data[var].value_counts(),
-                           "Ratio (%)": round(100 * data[var].value_counts()/ len(data), 2)}), end="\n\n\n")
-            var_count += 1
+    for col in categorical_cols:
+        if dataframe[col].nunique() <= number_of_classes:  # select according to its number of classes
+            print(pd.DataFrame({col: dataframe[col].value_counts(),
+                                "Ratio (%)": round(100 * dataframe[col].value_counts()/ len(dataframe), 2)}),
+                  end="\n\n\n")
+            col_count += 1
         else:
-            vars_more_classes.append(data[var].name)
-    print(f"{var_count} categorical variables have been described.\n\n")
-    if len(vars_more_classes) > 0:
-        print(f"There are {len(vars_more_classes)} variables which have more than {number_of_classes} classes.\n\n")
+            cols_more_classes.append(dataframe[col].name)
+
+    print(f"{col_count} categorical variables have been described.\n\n")
+    if len(cols_more_classes) > 0:
+        print(f"There are {len(cols_more_classes)} variables which have more than {number_of_classes} classes.\n\n")
         print(f"Variable names that have more than {number_of_classes} classes.\n\n")
-        print(vars_more_classes)
+        print(cols_more_classes)
 
 
 
